@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/cut_dialog"
+            android:layout_gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@drawable/ic_baseline_close_24"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:text="Actual payment"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/actualpayment"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:text="+₹11057.81"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:textSize="15dp"
+                android:text="Actual Total : "
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/actualtotal"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:gravity="right"
+
+                android:textSize="15dp"
+                android:text="+ ₹11057.81"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:textSize="15dp"
+                android:text="Tax Total :"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/taxtotal"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:gravity="right"
+
+                android:textSize="15dp"
+                android:text="- ₹11057.81"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp" />
+
+        <LinearLayout
+            android:paddingLeft="40dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+
+                android:textSize="12dp"
+                android:text="TDS :"
+                android:textColor="@color/grey"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/tds"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:gravity="right"
+
+                android:textSize="12dp"
+                android:text="- ₹11057.81"
+                android:textColor="@color/grey"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp" />
+
+        <LinearLayout
+
+            android:paddingLeft="40dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+
+                android:textSize="12dp"
+                android:text="Payment Gateway :"
+                android:textColor="@color/grey"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/paymentgateway"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:gravity="right"
+
+                android:textSize="12dp"
+                android:text="- ₹11057.81"
+                android:textColor="@color/grey"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_weight="4"
+                android:textSize="15dp"
+                android:text="Date :"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:id="@+id/timeperiod"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:gravity="right"
+
+                android:textSize="15dp"
+                android:text="- ₹11057.81"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

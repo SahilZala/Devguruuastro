@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_back"
+    android:layout_margin="5dp"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/paymentid"
+            android:textSize="18dp"
+            android:text="customerid : "
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            />
+
+            <View
+                android:layout_height="5dp"
+                android:layout_width="0dp" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+
+                <TextView
+                    android:textSize="18dp"
+                    android:text="date : "
+                    android:textStyle="bold"
+                    android:textColor="#273746 "
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" />
+
+                <View android:layout_height="0dp"
+                    android:layout_width="10dp"/>
+                <TextView
+                    android:id="@+id/orderdate"
+                    android:gravity="right"
+                    android:textColor="#616A6B"
+                    android:textSize="15dp"
+                    android:text="date "
+
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+
+            </LinearLayout>
+
+            <View android:layout_height="0dp"
+                android:layout_width="10dp"/>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+
+                <TextView
+                    android:textSize="18dp"
+                    android:text="time : "
+                    android:textStyle="bold"
+                    android:textColor="#273746 "
+
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" />
+
+                <View android:layout_height="0dp"
+                    android:layout_width="10dp"/>
+                <TextView
+                    android:id="@+id/ordertime"
+                    android:gravity="right"
+                    android:textColor="#616A6B "
+                    android:textSize="15dp"
+                    android:text="time  "
+
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_height="5dp"
+            android:layout_width="0dp" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+            <TextView
+                android:textSize="18dp"
+                android:text="Duration : "
+                android:textStyle="bold"
+                android:textColor="#273746"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <View android:layout_height="0dp"
+                android:layout_width="10dp"/>
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:textColor="#616A6B"
+                android:textSize="15dp"
+                android:text="duration"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_height="5dp"
+            android:layout_width="0dp" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+            <TextView
+                android:textSize="18dp"
+                android:text="User paid : "
+                android:textStyle="bold"
+                android:textColor="#273746 "
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <View android:layout_height="0dp"
+                android:layout_width="10dp"/>
+
+            <TextView
+                android:id="@+id/userpaid"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:textColor="#616A6B"
+                android:textSize="15dp"
+                android:text="duration"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_height="5dp"
+            android:layout_width="0dp" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+            <TextView
+                android:textSize="18dp"
+                android:text="Total earning : "
+                android:textStyle="bold"
+                android:textColor="#273746 "
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <View android:layout_height="0dp"
+                android:layout_width="10dp"/>
+
+            <TextView
+                android:id="@+id/totalearning"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:textColor="#616A6B"
+                android:textSize="15dp"
+                android:text="duration"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+            <TextView
+                android:textSize="18dp"
+                android:text="Order type : "
+                android:textStyle="bold"
+                android:textColor="#273746 "
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <View android:layout_height="0dp"
+                android:layout_width="10dp"/>
+
+            <TextView
+                android:id="@+id/ordertype"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:textColor="#616A6B"
+                android:textSize="15dp"
+                android:text="duration"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+            <TextView
+                android:textSize="18dp"
+                android:text="Status : "
+                android:textStyle="bold"
+                android:textColor="#273746 "
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <View android:layout_height="0dp"
+                android:layout_width="10dp"/>
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:textColor="#616A6B"
+                android:textSize="15dp"
+                android:text="completed"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

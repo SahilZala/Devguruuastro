@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border_back"
+        android:text="Terms and Conditions"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="These terms and conditions of Use (hereinafter referred as “Terms of Usage”) describe and govern the User’s use of the content and services offered by SONI ASSOCIATES (hereinafter referred as “We” “DEVGURUUASTRO” “us” “our” “DEVGURUUASTRO Mobile Application” “Mobile Application”).
+\n\n1.	UPDATION
+\nThe Mobile Application may update/amend/modify these Terms of Usage from time to time. The User is responsible to check the Terms of Usage periodically to remain in compliance with these terms.
+\n\n2.	USER CONSENT
+\nBy accessing the Mobile Application and using it, you (“Member”, “You”, “Your”) indicate that you understand the terms and unconditionally and expressly consent to the Terms of Usage of this Mobile Application. If you do not agree with the Terms of Usage, please do not click on the “I AGREE” button. The User is advised to read the Terms of Usage carefully before using or registering on the Mobile Application or accessing any material, information or services through the Mobile Application. Your use and continued usage of the Mobile Application (irrespective of the amendments made from time to time) shall signify your acceptance of the terms of usage and your agreement to be legally bound by the same.
+\nBy accessing the Mobile Application and using it, you (“Member”, “You”, “Your”) indicate that you understand the terms and unconditionally and expressly consent to the Terms of Usage of this Mobile Application. If you do not agree with the Terms of Usage, please do not click on the “I AGREE” button. The User is advised to read the Terms of Usage carefully before using or registering on the Mobile Application or accessing any material, information or services through the Mobile Application. Your use and continued usage of the Mobile Application (irrespective of the amendments made from time to time) shall signify your acceptance of the terms of usage and your agreement to be legally bound by the same.
+\n\n3.	GENERAL DESCRIPTION
+\nThe Mobile Application is an internet-based portal having its existence on mobile, Mobile Application and other electronic medium and provides astrological content, reports, chat, telephone, video and live streaming consultations (hereinafter referred as “Content”). The Mobile Application is offering “Free Services” and “Paid Services” (Collectively referred to as “Services”). Free Services are easily accessible without becoming a member however for accessing the personalized astrological services and/or receive additional Content and get access to Paid Services, you are required to register as a member on the Mobile Application. By registering for Paid Services, a Member agrees :
+\no	To provide current, complete, and accurate information about himself/herself as prompted to do so by the Mobile Application.
+\no	To maintain and update the above information as required and submitted by you with the view to maintain the accuracy of the information being current and complete.
+\n\n4.	REGISTRATION AND EILIGIBLITY
+\no	The User of the Mobile Application must be a person who can form legally binding contracts under Indian Contract Act, 1872. A minor under the age of eighteen (18) in most jurisdiction, are not permitted to avail the services provided on the Mobile Application without a legal guardian in accordance with the applicable laws. The Mobile Application would not be held responsible for any misuse that may occur by virtue of any person including a minor using the services provided through the Mobile Application.
+\no	For the User to avail the services, the User will be directed to Register as a Member on the Mobile Application whereby You (User) agree to provide update, current and accurate information while filling up the sign-in form. All information that you fill and provide to the Mobile Application and all updates thereto are referred to in these Terms of Usage as 'Registration Data.'
+\no	An account could be created by you through the Mobile Application ID (Your Phone Number) and password (OTP) or other log-in ID and password which can include a facebook, gmail or any other valid email ID. The User while creating an account hereby represents and warrants that all the information provided by the User is current, accurate and complete and that the User will maintain the accuracy and keep the information updated from time to time. Use of another User’s account information for availing the services is expressly prohibited. If in case it is found that the information so supplied on the Mobile Application is inaccurate, incomplete, untrue and not current, the Mobile Application has the right to suspend or terminate the User’s account and restrict/refuse the use of the Mobile Application by such User in future.
+\no	The right to use this Mobile Application is personal to the User and is not transferable to any other person or entity. The User would be responsible for protecting the confidentiality of User’s passwords and other information required for the purposes of registration. The User would be fully responsible for all the activities that occur under the User’s account with the Mobile Application. The Mobile Application shall not be liable for any loss or damage arising from the User’s failure to maintain secrecy and confidentiality. The User shall notify the Mobile Application immediately if they become aware of any unauthorized use of their Account(s) or breach of any security. The User must log out from its account at the end of the session.
+\no	The User while availing any service shall be informed whether the service so rendered is personal to the Mobile Application or is available from a Third party. The Mobile Application shall have no control or monitoring on the information disseminated to any third party via the Mobile Application.
+\no	The User agrees, understands and confirms that his/ her personal data including without limitation to details relating to debit card/ credit card transmitted over the Internet may be susceptible to misuse, hacking, theft and/ or fraud and that the Mobile Application or the Payment Service Provider(s) have no control over such matters and they shall not be liable for any loss suffered by the User on said account.
+\no	The Mobile Application does not permit the use of the Services by any User under the following conditions: -
+\n	If the User is a resident of any jurisdiction that may prohibit the use of the Services rendered by the Mobile Application.
+\n	If the User is a resident of any State/Country that prohibits by way of law, regulation, treaty or administrative act for entering into trade relations or/and
+\n	Due to any religious practices.
+\n	If the User has created multiple accounts using various mobile numbers. The User may not have more than one active account with the Mobile Application.
+\n\n5.	FEATURE “CALL WITH ASTROLOGER”
+\nThe Mobile Application is providing certain service which is available through the medium of telecommunication with the Astrologer listed and enrolled with the Mobile Application. By agreeing to the present Terms of Usage, you are also giving your unconditional consent to the Mobile Application to arrange a call with you on your mobile number even though your number is on DND service provided by your mobile service provider.
+\n\n6.	MOBILE APPLICATION CONTENT
+\no	The Mobile Application and any individual Mobile Applications which may be available through external hyperlinks with the Mobile Application are private property.
+\no	All interaction on this Mobile Application inclusive of the guidance and advice received directly from the Licensed Provider must comply with these Terms of Usage.
+\no	The User shall not post or transmit through this Mobile Application any material which violates or infringes in any way upon the rights of others, or any material which is unlawful, abusive, defamatory, invasive of privacy, vulgar, obscene, profane or otherwise objectionable, which encourages conduct that would constitute a criminal offence, give rise to civil liability or otherwise violate any law.
+\no	The Mobile Application shall have a right to suspend or terminate access by such User or terminate the User’s registration and such User shall not gain access to the Mobile Application.
+\no	The Mobile Application reserves the right to terminate the access or to change or discontinue any aspect or feature of the Mobile Application including, but not limited to, content, graphics, deals, offers, settings, etc.
+\no	Any information other then guidance and advice, received directly from the Third-Party Service Provider, the educational, graphics, research sources and other incidental information on the Site, the content, should not be considered as medical advice.
+\no	The Mobile Application does not take guarantee regarding the medical advice, if provided, by the third-party service provider inclusive of registered astrologers with the Mobile Application site. The User should always talk to an appropriately qualified health care professional for diagnosis and treatment including information regarding which medications or treatment may be appropriate for the User. None of the Content represents or warrants that any particular medication or treatment is safe, appropriate, or effective for you. DEVGURUUASTRO does not endorse any specific tests, medications, products or procedures.
+\no	The Mobile Application does not take guarantee of any untoward incident that may happen with the User after seeking the Service. The Mobile Application or the Service Provider providing the advice is not liable and does not guarantee any results as expected by the User and accessing the Mobile Application in such scenario is purely at the risk of the User.
+\no	By using this Mobile Application or Services, User hereby agrees that any legal remedy or liability that you may seek to obtain for actions or omissions of other Members inclusive of the service provider registered with the Mobile Application or other third parties linked with the Mobile Application, shall be limited to claim against such particular party who may have caused any harm. You agree to not to attempt to impose liability on or seek any legal remedy from the Mobile Application with respect to such actions or omissions.
+\n\n7.	USER ACCOUNT ACCESS
+\nThe Mobile Application shall have access to the account and the information created by the User for ensuring and maintaining the high-quality services provided by the Mobile Application and for addressing the need of the customer in the most effective manner. User hereby consents for the unconditional access of the account by the Mobile Application, its employees, agents and other appointed person in such regard. For the purpose of addressing the complaints (if any received) and any suspected abuse reported, the Mobile Application shall investigate on case-to-case basis from the records available. The User is directed to read the terms provided in the Privacy Policy as regards such records." />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
