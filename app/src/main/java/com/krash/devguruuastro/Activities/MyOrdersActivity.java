@@ -23,6 +23,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 
 public class MyOrdersActivity extends AppCompatActivity {
@@ -116,6 +118,8 @@ public class MyOrdersActivity extends AppCompatActivity {
 
                                 }
 
+                                Collections.reverse(userOrderList);
+
                                 binding.orderRV.setLayoutManager(new LinearLayoutManager(MyOrdersActivity.this, LinearLayoutManager.VERTICAL, false));
                                 userOrderAdapter = new UserOrderAdapter(getApplicationContext(), userOrderList);
                                 binding.orderRV.setAdapter(userOrderAdapter);
@@ -129,4 +133,6 @@ public class MyOrdersActivity extends AppCompatActivity {
                     });
         }
     }
+
+
 }

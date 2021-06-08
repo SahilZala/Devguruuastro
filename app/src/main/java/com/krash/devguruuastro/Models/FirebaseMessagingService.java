@@ -58,7 +58,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             builder.setSmallIcon(R.drawable.roundlogo);
         }
 
-        if(remoteMessage.getNotification().getTitle().toString().equalsIgnoreCase("chat"))
+        if(remoteMessage.getNotification().getTitle().toString().equalsIgnoreCase("chat") || remoteMessage.getNotification().getTitle().toString().equalsIgnoreCase("call"))
         {
             Intent resultIntent = new Intent(this, UsersActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);

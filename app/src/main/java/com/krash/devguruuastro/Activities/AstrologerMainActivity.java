@@ -178,7 +178,8 @@ public class AstrologerMainActivity extends AppCompatActivity {
                 updateStatus.put("callOnline", "Online");
 //                updateStatus.put("chatOnline", "Offline");
                 firebaseDatabase.getReference().child("Astrologers").child(Objects.requireNonNull(firebaseAuth.getUid())).updateChildren(updateStatus);
-                Intent i = new Intent(AstrologerMainActivity.this, AstrologerCallActivity.class);
+                Intent i = new Intent(AstrologerMainActivity.this, UsersActivity.class);
+                //Intent i = new Intent(AstrologerMainActivity.this, AstrologerCallActivity.class);
                 startActivity(i);
             }
         });

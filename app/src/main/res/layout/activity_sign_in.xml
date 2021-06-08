@@ -155,7 +155,7 @@
                 android:layout_marginBottom="16dp"
                 android:text="By joining Devguruaastro you are accepting all terms and conditions"
                 android:textColor="@color/white"
-                android:textSize="10dp"
+                android:textSize="12dp"
                 app:layout_constraintTop_toBottomOf="@id/astrologerBtn"
                 app:layout_constraintEnd_toEndOf="@id/astrologerBtn"
                 app:layout_constraintStart_toStartOf="@id/astrologerBtn"

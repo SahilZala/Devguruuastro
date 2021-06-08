@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.krash.devguruuastro.Models.User;
 import com.krash.devguruuastro.databinding.ActivityAstrologerCallBinding;
 import com.sinch.android.rtc.PushPair;
 import com.sinch.android.rtc.Sinch;
@@ -30,6 +31,7 @@ import com.sinch.android.rtc.calling.Call;
 import com.sinch.android.rtc.calling.CallClient;
 import com.sinch.android.rtc.calling.CallClientListener;
 import com.sinch.android.rtc.calling.CallListener;
+import com.sinch.gson.Gson;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,11 +45,23 @@ public class AstrologerCallActivity extends AppCompatActivity {
     Map<String, Object> status;
     ActivityAstrologerCallBinding binding;
 
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityAstrologerCallBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        Gson gson = new Gson();
+
+
+        user = gson.fromJson(getIntent().getStringExtra("myjson"), User.class);
+
+        responceToRequest();
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         status = new HashMap<>();
@@ -188,6 +202,8 @@ public class AstrologerCallActivity extends AppCompatActivity {
             status.put("isBusy", "false");
             firebaseDatabase.getReference().child("Astrologers").child(FirebaseAuth.getInstance().getUid()).updateChildren(status);
             endedCall.hangup();
+            binding.cl.setVisibility(View.GONE);
+
         }
 
         @Override
@@ -200,5 +216,10 @@ public class AstrologerCallActivity extends AppCompatActivity {
     public void onBackPressed() {
         firebaseDatabase.getReference().child("Astrologers").child(FirebaseAuth.getInstance().getUid()).child("isBusy").setValue("false");
         finish();
+    }
+
+    void responceToRequest()
+    {
+        FirebaseDatabase.getInstance().getReference("RequestQueue").child(user.getRc().getAstrologerid()).child(user.getRc().getRequestid()).child("status").setValue("accept");
     }
 }

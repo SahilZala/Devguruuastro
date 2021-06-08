@@ -1,12 +1,12 @@
 package com.krash.devguruuastro.Models;
 
 public class RequestClass {
-    String astrologerid,userid,requestid,sessionid,username,photo,duration,time,date,status,activation;
+    String astrologerid,userid,requestid,sessionid,username,photo,duration,time,date,status,activation,reqtype;
 
     public RequestClass() {
     }
 
-    public RequestClass(String astrologerid, String userid, String requestid, String sessionid, String username, String photo, String duration, String time, String date, String status, String activation) {
+    public RequestClass(String astrologerid, String userid, String requestid, String sessionid, String username, String photo, String duration, String time, String date, String status, String activation, String reqtype) {
         this.astrologerid = astrologerid;
         this.userid = userid;
         this.requestid = requestid;
@@ -18,6 +18,7 @@ public class RequestClass {
         this.date = date;
         this.status = status;
         this.activation = activation;
+        this.reqtype = reqtype;
     }
 
     public String getAstrologerid() {
@@ -106,5 +107,13 @@ public class RequestClass {
 
     public void setActivation(String activation) {
         this.activation = activation;
+    }
+
+    public String getReqtype() {
+        return reqtype;
+    }
+
+    public void setReqtype(String reqtype) {
+        this.reqtype = reqtype;
     }
 }

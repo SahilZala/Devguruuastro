@@ -78,7 +78,7 @@ public class SettingsActivity extends AppCompatActivity {
                                     Toast.makeText(SettingsActivity.this, "Signed Out Successfully!", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(SettingsActivity.this, SignInActivity.class);
                                     startActivity(i);
-                                    finish();
+                                    finishAffinity();
                                 }
                             });
                         }
@@ -93,7 +93,7 @@ public class SettingsActivity extends AppCompatActivity {
                             FirebaseDatabase.getInstance().getReference().child("Astrologers").child(FirebaseAuth.getInstance().getUid()).updateChildren(chatStatus);
                             FirebaseAuth.getInstance().signOut();
                             startActivity(i);
-                            finish();
+                            finishAffinity();
                         }
                     });
                 }

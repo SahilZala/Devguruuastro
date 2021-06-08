@@ -8,7 +8,7 @@ public class User {
     public User() {
     }
 
-    public User(String uid, String email, String name, String phoneNo, String profileImage, String DOB, String TOB, String POB, String occupation, String gender, String maritalStatus, String status, String duration, String balance, RequestClass rc) {
+    public User(String uid, String email, String name, String phoneNo, String profileImage, String DOB, String TOB, String POB, String occupation, String gender, String maritalStatus, String status, String duration, String balance) {
         this.uid = uid;
         this.email = email;
         this.name = name;
@@ -23,7 +23,6 @@ public class User {
         this.status = status;
         this.duration = duration;
         this.balance = balance;
-        this.rc = rc;
     }
 
 

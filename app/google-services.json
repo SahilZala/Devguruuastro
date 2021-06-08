@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:147344384944:android:508a925a5987c35a7b2c75",
         "android_client_info": {
-          "package_name": "com.krash.devguruuastro"
+          "package_name": "com.example.devguruuastro"
         }
       },
       "oauth_client": [
@@ -18,8 +18,16 @@
           "client_id": "147344384944-4u0j8gebml205dmd65lk4q4vq8k3i677.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.krash.devguruuastro",
+            "package_name": "com.example.devguruuastro",
             "certificate_hash": "f5dcca55a8e3c8ef2c64a4dd1538a524c2cdfdd6"
+          }
+        },
+        {
+          "client_id": "147344384944-ibm90gcf3cbj0aidut57m8lhb1amhqb1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.devguruuastro",
+            "certificate_hash": "2029cc6539b878f8235af38bd2ed545cc37e9b9a"
           }
         },
         {
@@ -51,6 +59,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "147344384944-d57dmqqhvq74jiieo1ht9htbgj8h2a6c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.krash.devguruuastro",
+            "certificate_hash": "2029cc6539b878f8235af38bd2ed545cc37e9b9a"
+          }
+        },
+        {
+          "client_id": "147344384944-v70i3su1m52lrvr4hgnqbjbo8bevdjam.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.krash.devguruuastro",
+            "certificate_hash": "f5dcca55a8e3c8ef2c64a4dd1538a524c2cdfdd6"
+          }
+        },
         {
           "client_id": "147344384944-f5v1nkv4vnuudksj9pc9pjg1ods7svid.apps.googleusercontent.com",
           "client_type": 3

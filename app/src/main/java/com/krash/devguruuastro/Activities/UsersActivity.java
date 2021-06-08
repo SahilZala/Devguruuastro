@@ -85,7 +85,7 @@ public class UsersActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent  i = new Intent(this,AstrologerMainActivity.class);
         startActivity(i);
-        finish();
+        finishAffinity();
     }
 
     List<RequestClass> requestClassList;
@@ -106,6 +106,8 @@ public class UsersActivity extends AppCompatActivity {
                 {
                     final RequestClass rc = ds.getValue(RequestClass.class);
 
+//                    Toast.makeText(UsersActivity.this, ""+rc.getSessionid(), Toast.LENGTH_SHORT).show();
+
                     if(rc.getActivation().equalsIgnoreCase("true") && rc.getStatus().equalsIgnoreCase("request"))
                     {
                         requestClassList.add(rc);
@@ -117,14 +119,17 @@ public class UsersActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                 User u = snapshot.getValue(User.class);
-                                u.setRc(rc);
+                              //  Toast.makeText(UsersActivity.this, ""+u.getName(), Toast.LENGTH_SHORT).show();
+                                if(u != null) {
+                                    u.setRc(rc);
 
 //                                Toast.makeText(UsersActivity.this, ""+u.getName(), Toast.LENGTH_SHORT).show();
 
-                                users.add(u);
+                                    users.add(u);
 
-                                usersAdapter = new UsersAdapter(UsersActivity.this, users);
-                                recyclerView.setAdapter(usersAdapter);
+                                    usersAdapter = new UsersAdapter(UsersActivity.this, users);
+                                    recyclerView.setAdapter(usersAdapter);
+                                }
                             }
 
                             @Override

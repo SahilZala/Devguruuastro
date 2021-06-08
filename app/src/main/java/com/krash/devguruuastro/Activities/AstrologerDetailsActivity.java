@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.RequestQueue;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +41,7 @@ import com.krash.devguruuastro.Adapters.ReviewAdapter;
 import com.krash.devguruuastro.Models.AstOrder;
 import com.krash.devguruuastro.Models.AstrologerModel;
 import com.krash.devguruuastro.Models.FcmNotificationsSender;
+import com.krash.devguruuastro.Models.RequestClass;
 import com.krash.devguruuastro.Models.ReviewModel;
 import com.krash.devguruuastro.Models.SystemTools;
 import com.krash.devguruuastro.R;
@@ -92,6 +94,7 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
     private Button chatBtn, callBtn;
     RecyclerView photo_count_recycler_view;
     PhotoListAdapte photoListAdapte;
+    Dialog call_dialog;
 
 
     long lastCallMins = 0;
@@ -121,6 +124,9 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
         pBtn = findViewById(R.id.pBtn);
         astOff = findViewById(R.id.astOffTV);
         btnLayout = findViewById(R.id.btnLayout);
+
+        call_dialog = new Dialog(this);
+
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -229,7 +235,7 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
                     if (model.getChatOnline().equals("Online")) {
                         astOff.setVisibility(View.GONE);
                         chatBtn.setVisibility(View.VISIBLE);
-                        chatBtn.setBackgroundColor(Color.rgb(0,153,51));
+                        chatBtn.setBackgroundColor(Color.rgb(168,106,231));
 
                     } else if (model.getChatOnline().equals("Offline")) {
                         astOff.setVisibility(View.GONE);
@@ -240,7 +246,7 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
                     if (model.getCallOnline().equals("Online")) {
                         astOff.setVisibility(View.GONE);
                         callBtn.setVisibility(View.VISIBLE);
-                        callBtn.setBackgroundColor(Color.rgb(0,153,51));
+                        callBtn.setBackgroundColor(Color.rgb(168,106,231));
                     } else if (model.getCallOnline().equals("Offline")) {
                         astOff.setVisibility(View.GONE);
                         callBtn.setVisibility(View.VISIBLE);
@@ -405,74 +411,129 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
         getCallAndChatDuration();
     }
 
+
+    DatabaseReference reqRef;
+    ValueEventListener l;
+
+
     private void callAstrologer() {
+
+
+        DatabaseReference dref = FirebaseDatabase.getInstance().getReference("RequestQueue").child(uid);
+
+        String requestid = dref.push().getKey();
+        String sessionid = UUID.randomUUID().toString();
+
+
+        RequestClass rc = new RequestClass(uid,firebaseAuth.getUid(),requestid,sessionid,username,"url",""+duration,SystemTools.getCurrent_time(),SystemTools.getCurrent_date(),"request","true","call");
+        dref.child(requestid).setValue(rc);
+
+        //DatabaseReference statusRef = FirebaseDatabase.getInstance().getReference();
+
 
         final int[] isEstablish = {0};
 
-        final Dialog call_dialog = new Dialog(this);
+
         call_dialog.setContentView(R.layout.call_dialog);
         call_dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        call_dialog.setCancelable(true);
+        call_dialog.setCancelable(false);
 
         call_dialog.show();
-
 
 
         FcmNotificationsSender fns = new FcmNotificationsSender(model.getToken(),"Call","You have Call from "+username,getApplicationContext(),AstrologerDetailsActivity.this);
         fns.SendNotifications();
 
-        ref.removeEventListener(listener);
-        callAst = sinchClient.getCallClient().callUser(uid);
-        callBinding.astCallEndBtn.setOnClickListener(new View.OnClickListener() {
+        startPreTimer(120000,1000,requestid);
+
+
+
+        reqRef = FirebaseDatabase.getInstance().getReference("RequestQueue").child(uid).child(requestid);
+
+        l = reqRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                callDialog.dismiss();
-                callAst.hangup();
-            }
-        });
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    if (snapshot.child("status").getValue().toString().equalsIgnoreCase("accept"))
+                    {
 
-        callBinding.astCallName.setText(name.getText().toString());
-        Glide.with(AstrologerDetailsActivity.this).load(imageURL).into(callBinding.astCallImg);
+                        call_dialog.dismiss();
+                        t1.cancel();
 
-        callAst.addCallListener(new CallListener() {
-            @Override
-            public void onCallProgressing(Call call) {
 
-                Toast.makeText(AstrologerDetailsActivity.this, "Ringing...", Toast.LENGTH_SHORT).show();
-            }
+                        ref.removeEventListener(listener);
+                        callAst = sinchClient.getCallClient().callUser(uid);
+                        callBinding.astCallEndBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                callDialog.dismiss();
+                                callAst.hangup();
+                            }
+                        });
 
-            @Override
-            public void onCallEstablished(Call call) {
-                isEstablish[0] = 1;
-                call_dialog.dismiss();
-                Toast.makeText(AstrologerDetailsActivity.this, "Call Established!", Toast.LENGTH_SHORT).show();
-                callDialog.show();
-                duration = duration * 60000;
-                startTimer(duration, 1000);
-            }
+                        callBinding.astCallName.setText(name.getText().toString());
+                        Glide.with(AstrologerDetailsActivity.this).load(imageURL).into(callBinding.astCallImg);
 
-            @Override
-            public void onCallEnded(Call endedCall) {
-                Toast.makeText(AstrologerDetailsActivity.this, "Call Ended!", Toast.LENGTH_SHORT).show();
-                call = null;
-                callDialog.dismiss();
-                endedCall.hangup();
+                        callAst.addCallListener(new CallListener() {
+                            @Override
+                            public void onCallProgressing(Call call) {
 
-                call_dialog.dismiss();
-                if(isEstablish[0] == 1)
-                {
-                    callEnded();
-                }
-            }
+                                Toast.makeText(AstrologerDetailsActivity.this, "Ringing...", Toast.LENGTH_SHORT).show();
+                            }
 
-            @Override
-            public void onShouldSendPushNotification(Call call, List<PushPair> list) {
-          //      ..
+                            @Override
+                            public void onCallEstablished(Call call) {
+                                isEstablish[0] = 1;
+                                call_dialog.dismiss();
+                                Toast.makeText(AstrologerDetailsActivity.this, "Call Established!", Toast.LENGTH_SHORT).show();
+                                callDialog.show();
+                                duration = duration * 60000;
+                                startTimer(duration, 1000);
+                            }
+
+                            @Override
+                            public void onCallEnded(Call endedCall) {
+                                Toast.makeText(AstrologerDetailsActivity.this, "Call Ended!", Toast.LENGTH_SHORT).show();
+                                call = null;
+                                callDialog.dismiss();
+                                endedCall.hangup();
+
+                                call_dialog.dismiss();
+                                if(isEstablish[0] == 1)
+                                {
+                                    callEnded();
+                                }
+                            }
+
+                            @Override
+                            public void onShouldSendPushNotification(Call call, List<PushPair> list) {
+                                //      ..
 
 //                Toast.makeText(AstrologerDetailsActivity.this, "noti", Toast.LENGTH_SHORT).show();
 
+                            }
+                        });
+
+                    }
+                    else if(snapshot.child("status").getValue().toString().equalsIgnoreCase("cancel"))
+                    {
+                        onBackPressed();
+
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Toast.makeText(AstrologerDetailsActivity.this, ""+ex.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+
 
     }
 
@@ -588,8 +649,9 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
         }
     }
 
+    CountDownTimer t,t1;
     public void startTimer(final long finish, long tick) {
-        CountDownTimer t;
+
         t = new CountDownTimer(finish, tick) {
             public void onTick(long millisUntilFinished) {
                 remainedSecs = millisUntilFinished / 1000;
@@ -601,6 +663,23 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
             }
         }.start();
     }
+
+    public void startPreTimer(final long finish, long tick, final String reqid) {
+
+        t1 = new CountDownTimer(finish, tick) {
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                call_dialog.dismiss();
+                FirebaseDatabase.getInstance().getReference("RequestQueue").child(uid).child(reqid).child("status").setValue("timedone");
+                onBackPressed();
+            }
+        }.start();
+    }
+
+
 
     private void callEnded() {
         usedDuration = duration / 60000;
@@ -742,6 +821,19 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
 
             }
         });
-
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+        if(reqRef != null) {
+           reqRef.removeEventListener(l);
+        }
+        Intent i = new Intent(getApplicationContext(),MainActivity.class).putExtra("comesfrom","astrodetail");
+        startActivity(i);
+        finishAffinity();
+    }
+
+    int isFinish = 0;
 }

@@ -277,7 +277,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         String reqid = FirebaseDatabase.getInstance().getReference().push().getKey();
         String sessionid = UUID.randomUUID().toString();
 
-        final RequestClass rc = new RequestClass(getIntent().getStringExtra("uid").toString(),FirebaseAuth.getInstance().getUid(),reqid,sessionid,name.getText().toString(),"url",dur, SystemTools.getCurrent_time(),SystemTools.getCurrent_date(),"request","true");
+        final RequestClass rc = new RequestClass(getIntent().getStringExtra("uid").toString(),FirebaseAuth.getInstance().getUid(),reqid,sessionid,name.getText().toString(),"url",dur, SystemTools.getCurrent_time(),SystemTools.getCurrent_date(),"request","true","chat");
         FirebaseDatabase.getInstance().getReference().child("RequestQueue").child(getIntent().getStringExtra("uid")).child(reqid).setValue(rc).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

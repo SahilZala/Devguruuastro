@@ -9,8 +9,8 @@ android {
         applicationId "com.krash.devguruuastro"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -18,6 +18,13 @@ android {
     buildFeatures{
         dataBinding true
         viewBinding true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 
     buildTypes {
@@ -30,6 +37,10 @@ android {
 
     packagingOptions {
         exclude 'AndroidManifest.xml' //This fixes a bug in FAN 5.0.1
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

@@ -348,12 +348,14 @@ public class MainActivity extends AppCompatActivity {
                 astrologerModelListOnline.clear();
                 joinedList.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    if (snapshot1.child("chatOnline").equals("Offline")) {
-                        AstrologerModel model = snapshot1.getValue(AstrologerModel.class);
-                        astrologerModelListOffline.add(model);
-                    } else {
-                        AstrologerModel model = snapshot1.getValue(AstrologerModel.class);
-                        astrologerModelListOnline.add(model);
+                    if(snapshot1 != null) {
+                        if (snapshot1.child("chatOnline").equals("Offline")) {
+                            AstrologerModel model = snapshot1.getValue(AstrologerModel.class);
+                            astrologerModelListOffline.add(model);
+                        } else {
+                            AstrologerModel model = snapshot1.getValue(AstrologerModel.class);
+                            astrologerModelListOnline.add(model);
+                        }
                     }
                 }
 

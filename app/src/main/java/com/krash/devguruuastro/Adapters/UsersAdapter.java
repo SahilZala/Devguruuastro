@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
+import com.krash.devguruuastro.Activities.AstrologerCallActivity;
 import com.krash.devguruuastro.Activities.AstrologerChatActivity;
 import com.krash.devguruuastro.Activities.ChatActivity;
 import com.krash.devguruuastro.Models.User;
@@ -43,12 +44,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final UsersViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final UsersViewHolder holder, final int position) {
         final User user = users.get(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), AstrologerChatActivity.class);
+                if (users.get(position).getRc().getReqtype().equalsIgnoreCase("chat")) {
+                    Intent i = new Intent(v.getContext(), AstrologerChatActivity.class);
 //                i.putExtra("name", user.getName());
 //                i.putExtra("uid", user.getUid());
 //                i.putExtra("imageURL", user.getProfileImage());
@@ -64,17 +66,35 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
 //                i.putExtra("requsestid",user.getRc().getRequestid());
 
 
-                Gson gson = new Gson();
-                String myjson = gson.toJson(user);
-             //   Toast.makeText(context, ""+myjson, Toast.LENGTH_SHORT).show();
-                Log.d("userobject",myjson);
-                i.putExtra("myjson",myjson);
+                    Gson gson = new Gson();
+                    String myjson = gson.toJson(user);
+                    //   Toast.makeText(context, ""+myjson, Toast.LENGTH_SHORT).show();
+                    Log.d("userobject", myjson);
+                    i.putExtra("myjson", myjson);
 //                Map<String, Object> updateStatus = new HashMap<>();
 //                updateStatus.put("status", "completed");
 //                firebaseDatabase.getReference().child("Users").child(user.getUid()).updateChildren(updateStatus);
-                context.startActivity(i);
+                    context.startActivity(i);
+                }
+                else
+                {
+
+                    Intent i = new Intent(v.getContext(), AstrologerCallActivity.class);
+                    Gson gson = new Gson();
+                    String myjson = gson.toJson(user);
+                    //   Toast.makeText(context, ""+myjson, Toast.LENGTH_SHORT).show();
+                    Log.d("userobject", myjson);
+                    i.putExtra("myjson", myjson);
+//                Map<String, Object> updateStatus = new HashMap<>();
+//                updateStatus.put("status", "completed");
+//                firebaseDatabase.getReference().child("Users").child(user.getUid()).updateChildren(updateStatus);
+                    context.startActivity(i);
+
+                }
             }
+
         });
+
         holder.binding.username.setText(user.getName());
         holder.binding.genderTV.setText("Gender: " + user.getGender());
         holder.binding.dobTV.setText("Date of Birth: " + user.getDOB());
@@ -82,6 +102,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         holder.binding.pobTV.setText("Place of Birth: " + user.getPOB());
         holder.binding.occupationTV.setText("Occupation: " + user.getOccupation());
         holder.binding.durationTV.setText("Duration: " + user.getDuration() + " min(s)");
+        holder.binding.reqtype.setText("Reqtype: "+ user.getRc().getReqtype());
         Glide.with(holder.itemView).load(user.getProfileImage()).into(holder.binding.profileImage);
     }
 

@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/durationTV" />
+        app:layout_constraintTop_toBottomOf="@+id/reqtype" />
 
     <TextView
         android:id="@+id/genderTV"
@@ -86,5 +86,13 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/occupationTV"
         app:layout_constraintTop_toBottomOf="@+id/occupationTV" />
+
+    <TextView
+        android:id="@+id/reqtype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/durationTV"
+        app:layout_constraintTop_toBottomOf="@+id/durationTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

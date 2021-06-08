@@ -13,21 +13,20 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@drawable/logo"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme"
-        >
-        <activity android:name=".Activities.UserChatActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".Activities.AstrologerChatActivity"
-            android:screenOrientation="portrait"
-            />
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activities.AstrologerCallRequest"></activity>
+        <activity
+            android:name=".Activities.UserChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.AstrologerChatActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MatMainActivity"
             android:screenOrientation="portrait"
