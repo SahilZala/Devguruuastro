@@ -148,7 +148,7 @@ public class SignInActivity extends AppCompatActivity {
                                     progressDialog.dismiss();
                                     startActivity(i);
                                 }
-                                finish();
+                                finishAffinity();
                             }
 
                             @Override

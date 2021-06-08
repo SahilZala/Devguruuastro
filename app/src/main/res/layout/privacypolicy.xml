@@ -68,7 +68,11 @@ o	In case the Mobile Application or Payment gateway’s webpage, that is linked 
 	In case the Bank Account is not debited, the User may initiate a fresh transaction to make payment.
 However, refund for multiple payment, if any, even after the above precaution against the same order shall be refunded in full without deduction of the transaction charges as mentioned above. The Mobile Application shall only retain the cost of one single order as intended to be placed by the User.
 o	If there are orders that the Mobile Application is unable to accept and must cancel, the Mobile Application at its sole discretion, reserves the right to refuse or cancel any order for any reason whatsoever. Some situations may result in the order being cancelled and include, without limitation, non-availability of the service, inaccuracy, error in pricing information or other problems as identified. If the User’s order is cancelled after charges being paid against the said service, the said amount paid for booking shall be refunded.
-4.	USER OBLIGATION
+
+4.	AUDIO
+o	Using data calling function to connect the call between astrologer and user.
+
+5.	USER OBLIGATION
 The User (inclusive of the astrologer and the Member Customer) is under an obligation to not to violate the privacy policy, terms and conditions and any other terms as defined on the Mobile Application. The User represents that he is an individual and not a corporation or other legal business entity. The rights to use the Mobile Application’s services is personal to the User. The User shall while using the Mobile Application and engaged in any form of communication on any of the forums inclusive of the products listed on the Mobile Application shall not violate the terms and conditions which are inclusive of:-
 o	The User shall not Post, publish or transmit any messages that is false, misleading, defamatory, harmful, threatening, abusive, harassing, defamatory, invades another's privacy, offensive, promotes racism, hatred or harm against any individual or group or religion or caste, infringes another's rights including any intellectual property rights or copyright or trademark, violates or encourages any conduct that would violate any applicable law or regulation or would give rise to civil liability.
 o	The User shall not upload or post or otherwise make available any content that User do not have a right to make available, under any law or under contractual or fiduciary relationships.
@@ -91,7 +95,7 @@ o	The User by becoming a Registered member of the Mobile Application agrees to t
 	Any false complaint made by a Member shall make such Member liable for termination of his / her membership without any refund of the subscription fee.
 	The Mobile Application reserves the right to withdraw its services to any customer who is found to be unreasonable or abusive during their conversation with the Service Provider inclusive of astrologer regardless of any reason.
 While the Mobile Application shall take all steps to resolve any situation that is in violation of the above obligations arises, however if the situation is not controllable, the Mobile Application reserves its right to send a written warning henceforth. Such violations, if repeated by the User, shall lead to a total ban for transacting on the platform by such User. If any balance is present in the wallet of the User, the same shall be refunded subject to the other charges that may be applicable for such violations.
-5.	BANK ACCOUNT INFORMATION
+6.	BANK ACCOUNT INFORMATION
 The User is under an obligation to provide his banking information as and when required. For that purpose, the obligation of the User are:-
 o	The User agrees that the debit/credit card details provided by him/ her for use of the aforesaid Service(s) must be correct and accurate and that the User shall not use a debit/ credit card, that is not lawfully owned by him/ her or the use of which is not authorized by the lawful owner thereof. The User further agrees and undertakes to provide correct and valid debit/credit card details.
 o	The User may pay the fees required, to the Mobile Application by using a debit/credit card or through online banking account. The User warrants, agrees and confirms that when he/ she initiates a payment transaction and/or issues an online payment instruction and provides his/ her card / bank details:
@@ -99,9 +103,10 @@ o	The User may pay the fees required, to the Mobile Application by using a debit
 	The User is responsible to ensure that the card/ bank account details provided by him/ her are accurate;
 o	The User is responsible to ensure sufficient credit is available on the nominated card/ bank account at the time of making the payment to permit the payment of the dues payable or the bill(s) selected by the User inclusive of the applicable Fee.
 The User further agrees that if any part of these Terms of Usage are determined to be invalid or unenforceable pursuant to applicable law including, but not limited to, the warranty disclaimers and liability limitations set forth herein, then the invalid or unenforceable provision will be deemed superseded by a valid, enforceable provision that most closely matches the intent of the original provision and the remainder of these Terms of Usage shall continue in effect.
-6.	DISCLAIMER/LIMITATION OF LIABILITY/WARRANTY
+7.	DISCLAIMER/LIMITATION OF LIABILITY/WARRANTY
 The User expressly understands and agree that, to the maximum extent permitted by applicable law, the Mobile Application does not provide warranties for the service. Astrological counseling provided through the Mobile Application is based on cumulative or individual knowledge, experience and interpretations of astrologers and as such, it may vary from one astrologer to another astrologer.
 o	The Mobile Application is offering services through a diverse panel of Astrologers duly verified by the Mobile Application and such Service Provider (Astrologer) may from time to time make recommendations of using mantras, jantras, gemstones or other astrological remedies to be used by User. Such recommendations are being made in good faith by the astrologers and the Mobile Application and its subsidiaries, affiliates, officers, employees, agents, partners, and licensors make no warranty that :
+
 
 "
                 tools:ignore="HardcodedText" />

@@ -65,6 +65,41 @@ public class MyOrdersActivity extends AppCompatActivity {
                             if (astOrderList.size() == 0) {
 
                             } else {
+
+                                int minindex = 0;
+                                SimpleDateFormat smf = new SimpleDateFormat("dd-MM-yyyy");
+
+
+                                for(int k = 0;k<astOrderList.size()-1;k++)
+                                {
+                                    minindex = k;
+
+                                    for(int j = k+1;j<astOrderList.size();j++)
+                                    {
+                                        try {
+                                            Date d1 = smf.parse(astOrderList.get(minindex).getOrderDate());
+                                            Date d2 = smf.parse(astOrderList.get(j).getOrderDate());
+
+                                            if(d1.compareTo(d2) == 1)
+                                            {
+                                                minindex = j;
+                                            }
+                                        } catch (ParseException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+
+
+                                    astOrderList.set(minindex,astOrderList.get(k));
+                                    astOrderList.set(k,astOrderList.get(minindex));
+
+                                }
+
+                                Collections.reverse(astOrderList);
+
+
+
                                 binding.orderRV.setLayoutManager(new LinearLayoutManager(MyOrdersActivity.this, LinearLayoutManager.VERTICAL, false));
                                 astOrderAdapter = new AstOrderAdapter(getApplicationContext(), astOrderList);
                                 binding.orderRV.setAdapter(astOrderAdapter);
