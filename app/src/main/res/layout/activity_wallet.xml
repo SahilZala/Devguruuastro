@@ -139,9 +139,46 @@
             app:layout_constraintTop_toBottomOf="@+id/textView33">
 
             <RadioButton
+                android:gravity="center"
                 android:id="@+id/radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@drawable/radio_selector"
+                android:button="@drawable/null_selector"
+                android:text="₹10"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:gravity="center"
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/radio_selector"
+                android:button="@drawable/null_selector"
+                android:text="₹20"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:gravity="center"
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/radio_selector"
+                android:button="@drawable/null_selector"
+                android:text="₹30"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:gravity="center"
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/radio_selector"
                 android:button="@drawable/null_selector"
                 android:text="₹50"
@@ -149,46 +186,14 @@
                 android:textSize="16sp" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/radio_selector"
-                android:button="@drawable/null_selector"
-                android:text="₹100"
-                android:textAlignment="center"
-                android:textSize="16sp" />
-
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/radio_selector"
-                android:button="@drawable/null_selector"
-                android:text="₹200"
-                android:textAlignment="center"
-                android:textSize="16sp" />
-
-            <RadioButton
-                android:id="@+id/radioButton4"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/radio_selector"
-                android:button="@drawable/null_selector"
-                android:text="₹500"
-                android:textAlignment="center"
-                android:textSize="16sp" />
-
-            <RadioButton
+                android:gravity="center"
                 android:id="@+id/radioButton5"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/radio_selector"
                 android:button="@drawable/null_selector"
-                android:text="₹1000"
+                android:text="₹100"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
