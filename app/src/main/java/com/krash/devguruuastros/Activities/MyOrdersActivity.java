@@ -2,7 +2,9 @@ package com.krash.devguruuastros.Activities;
 
 import android.os.Bundle;
 import android.service.autofill.UserData;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,14 +70,29 @@ public class MyOrdersActivity extends AppCompatActivity {
                                     public int compare(AstOrder o1, AstOrder o2) {
 
                                         SimpleDateFormat smf = new SimpleDateFormat("dd-MM-yyyy");
+                                        SimpleDateFormat smf1 = new SimpleDateFormat("HH:mm:ss");
 
                                         try {
                                             Date d1 = smf.parse(o1.getOrderDate());
                                             Date d2 = smf.parse(o2.getOrderDate());
 
+                                            Date d3 = smf1.parse(o1.getOrderTime());
+                                            Date d4 = smf1.parse(o2.getOrderTime());
+
+
+
+
                                             if(d1.compareTo(d2) == -1)
                                             {
                                                 return 1;
+                                            }
+                                            else if(d1.compareTo(d2) == 0){
+                                                if((d3.getTime() - d4.getTime()) < 0) {
+                                                    return 1;
+                                                }
+                                                else {
+                                                    return -1;
+                                                }
                                             }
                                             else{
                                                 return -1;
@@ -162,14 +179,29 @@ public class MyOrdersActivity extends AppCompatActivity {
                                     public int compare(UserOrder o1, UserOrder o2) {
 
                                         SimpleDateFormat smf = new SimpleDateFormat("dd-MM-yyyy");
+                                        SimpleDateFormat smf1 = new SimpleDateFormat("HH:mm:ss");
 
                                         try {
                                             Date d1 = smf.parse(o1.getOrderDate());
                                             Date d2 = smf.parse(o2.getOrderDate());
 
+                                            Date d3 = smf1.parse(o1.getOrderTime());
+                                            Date d4 = smf1.parse(o2.getOrderTime());
+
+
+
+
                                             if(d1.compareTo(d2) == -1)
                                             {
                                                 return 1;
+                                            }
+                                            else if(d1.compareTo(d2) == 0){
+                                                if((d3.getTime() - d4.getTime()) < 0) {
+                                                    return 1;
+                                                }
+                                                else {
+                                                    return -1;
+                                                }
                                             }
                                             else{
                                                 return -1;

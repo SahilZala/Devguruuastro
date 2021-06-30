@@ -112,13 +112,15 @@ public class AstrologerCallActivity extends AppCompatActivity {
                     }
                 });
 
+                incomingCall.addCallListener(new sinchCallListener(ringtoneSound));
+
                 alertDialog.setPositiveButton( "Pick", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ringtoneSound.stop();
                         call.answer();
                         binding.cl.setVisibility(View.VISIBLE);
-                        call.addCallListener(new sinchCallListener());
+
                         status.clear();
                         status.put("isBusy", "true");
                         firebaseDatabase.getReference().child("Astrologers").child(FirebaseAuth.getInstance().getUid()).updateChildren(status);
@@ -214,6 +216,12 @@ public class AstrologerCallActivity extends AppCompatActivity {
 
     private class sinchCallListener implements CallListener {
 
+        Ringtone ringtone;
+        sinchCallListener(Ringtone rm)
+        {
+            ringtone = rm;
+        }
+
         @Override
         public void onCallProgressing(Call call) {
             Toast.makeText(AstrologerCallActivity.this, "Ringing...", Toast.LENGTH_SHORT).show();
@@ -226,6 +234,7 @@ public class AstrologerCallActivity extends AppCompatActivity {
 
         @Override
         public void onCallEnded(Call endedCall) {
+            ringtone.stop();
             Toast.makeText(AstrologerCallActivity.this, "Call Ended!", Toast.LENGTH_SHORT).show();
             call = null;
             status.clear();
@@ -248,6 +257,7 @@ public class AstrologerCallActivity extends AppCompatActivity {
     public void onBackPressed() {
         firebaseDatabase.getReference().child("Astrologers").child(FirebaseAuth.getInstance().getUid()).child("isBusy").setValue("false");
 
+        FirebaseDatabase.getInstance().getReference("RequestQueue").child(user.getRc().getAstrologerid()).child(user.getRc().getRequestid()).child("status").setValue("astdone");
         sinchClient.stopListeningOnActiveConnection();
         sinchClient.terminate();
 

@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -15,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.krash.devguruuastros.Adapters.UsersAdapter;
 import com.krash.devguruuastros.Models.RequestClass;
+import com.krash.devguruuastros.Models.SahilRingtone;
 import com.krash.devguruuastros.Models.User;
 import com.krash.devguruuastros.R;
 
@@ -33,6 +39,8 @@ public class UserCallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_call);
+
+        checkIsRinging();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         users = new ArrayList<>();
@@ -149,5 +157,15 @@ public class UserCallActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    void checkIsRinging()
+    {
+        if(SahilRingtone.getRingtone() != null) {
+            if (SahilRingtone.isPlaying()) {
+                SahilRingtone.stop();
+            }
+        }
     }
 }

@@ -66,7 +66,6 @@ public class AstrologerMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_astrologer_main);
 
-
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseMessaging.getInstance().subscribeToTopic(firebaseAuth.getUid());

@@ -197,7 +197,7 @@
     <LinearLayout
         android:id="@+id/tableLayout"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -207,6 +207,8 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <ToggleButton
+            android:textSize="12dp"
+            android:gravity="center"
             android:id="@+id/chatTB"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -222,6 +224,8 @@
             android:textStyle="bold" />
 
         <ToggleButton
+            android:textSize="12dp"
+            android:gravity="center"
             android:id="@+id/callTB"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -235,6 +239,7 @@
             android:textOn="Online"
             android:textStyle="bold" />
         <LinearLayout
+            android:padding="10dp"
             android:id="@+id/liveMain"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -246,12 +251,13 @@
             <ImageView
                 android:id="@+id/imageView9"
                 android:layout_width="45dp"
-                android:layout_height="38dp"
+                android:layout_height="37dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 app:srcCompat="@drawable/liveicon" />
 
             <TextView
+                android:textSize="12dp"
                 android:gravity="center"
                 android:id="@+id/liveStream"
                 android:layout_width="match_parent"

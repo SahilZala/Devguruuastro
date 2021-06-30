@@ -26,7 +26,6 @@ public class ChatMainActivity extends AppCompatActivity {
     private RecyclerView astMainRV;
     private ChatMainAdapter chatMainAdapter;
 
-    ImageView callmainbackbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,7 @@ public class ChatMainActivity extends AppCompatActivity {
                 Toast.makeText(ChatMainActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
             }
         });
-        callmainbackbtn.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.chatmainbackbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();

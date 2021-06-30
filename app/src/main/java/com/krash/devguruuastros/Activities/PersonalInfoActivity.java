@@ -286,6 +286,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
                     i.putExtra("myUID", FirebaseAuth.getInstance().getUid());
                     i.putExtra("astPrice", astPrice + "");
                     i.putExtra("balance",""+bal);
+                    i.putExtra("username",""+name.getText());
 
 
                     Gson gson = new Gson();

@@ -60,6 +60,7 @@ public class AstrologerAdapter extends RecyclerView.Adapter<AstrologerAdapter.Vi
                 i.putExtra("name", astrologerModelList.get(position).getName());
                 i.putExtra("userType", "user");
                 holder.itemView.getContext().startActivity(i);
+
             }
         });
     }

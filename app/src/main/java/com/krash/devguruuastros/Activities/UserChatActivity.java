@@ -244,7 +244,7 @@ public class UserChatActivity extends AppCompatActivity {
         progressDialog.setTitle("Astrologer havent accept request at");
         progressDialog.show();
 
-        count2Min(120000,1000);
+        count2Min(60000,1000);
 
         FirebaseDatabase.getInstance().getReference("RequestQueue").child(rc.getAstrologerid()).child(rc.getRequestid()).child("status").addValueEventListener(new ValueEventListener() {
             @Override
@@ -349,6 +349,7 @@ public class UserChatActivity extends AppCompatActivity {
         userMap.put("AstUID", rc.getAstrologerid());
         userMap.put("orderID", rc.getSessionid());
         userMap.put("name", getIntent().getStringExtra("name"));
+        astMap.put("username",getIntent().getStringExtra("username"));
         userMap.put("orderDate", SystemTools.getCurrent_date());
         userMap.put("orderTime", SystemTools.getCurrent_time());
         userMap.put("duration", "" + (duration - (int) (remainedSecs / 60)));
@@ -360,6 +361,7 @@ public class UserChatActivity extends AppCompatActivity {
         astMap.put("UserUID", FirebaseAuth.getInstance().getUid());
         astMap.put("orderID", rc.getSessionid());
         astMap.put("name", getIntent().getStringExtra("name"));
+        astMap.put("username",getIntent().getStringExtra("username"));
         astMap.put("orderDate", SystemTools.getCurrent_date());
         astMap.put("orderTime", SystemTools.getCurrent_time());
         astMap.put("duration", "" + (duration - (int) (remainedSecs / 60)));

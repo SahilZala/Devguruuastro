@@ -464,7 +464,7 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
         FcmNotificationsSender fns = new FcmNotificationsSender(model.getToken(),"Call","You have Call from "+username,"USERCALLACTIVITY",getApplicationContext(),AstrologerDetailsActivity.this);
         fns.SendNotifications();
 
-        startPreTimer(120000,1000,requestid);
+        startPreTimer(60000,1000,requestid);
 
 
 
@@ -537,9 +537,11 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
                         });
 
                     }
-                    else if(snapshot.child("status").getValue().toString().equalsIgnoreCase("cancel"))
+                    else if(snapshot.child("status").getValue().toString().equalsIgnoreCase("astdone") && isEstablish[0] == 0)
                     {
-                        call_dialog.dismiss();
+                        if(call_dialog.isShowing()) {
+                            call_dialog.dismiss();
+                        }
                         onBackPressed();
 
                     }
@@ -727,6 +729,7 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
         userMap.put("AstUID", uid);
         userMap.put("orderID", orderID);
         userMap.put("name", name.getText().toString());
+        astMap.put("username",username);
         userMap.put("orderType", "Call");
         userMap.put("orderDate", SystemTools.getCurrent_date());
         userMap.put("orderTime", SystemTools.getCurrent_time());
@@ -738,6 +741,7 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
         astMap.put("orderID", orderID);
         astMap.put("orderType", "Call");
         astMap.put("name", name.getText().toString());
+        astMap.put("username",username);
         astMap.put("orderDate", SystemTools.getCurrent_date());
         astMap.put("orderTime", SystemTools.getCurrent_time());
         astMap.put("duration", ((duration / 60000) - (remainedSecs / 60)) + "");
@@ -771,15 +775,15 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
 
         firebaseDatabase.getReference().child("Astrologers").child(uid).child("balance").setValue((astBal + ((usedDuration * astCallPrice) / 2)) + "");
 
-        
+
         
         Intent i = new Intent(AstrologerDetailsActivity.this, MainActivity.class);
         i.putExtra("comesfrom","afterCall");
         i.putExtra("astid",uid);
         i.putExtra("name",username);
         startActivity(i);
-        
-        //finish();
+        finishAffinity();
+
     }
 
     List<String> photolList;
@@ -884,4 +888,7 @@ public class AstrologerDetailsActivity extends AppCompatActivity {
     }
 
     int isFinish = 0;
+
+
+
 }

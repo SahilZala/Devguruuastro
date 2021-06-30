@@ -45,9 +45,11 @@ public class FcmNotificationsSender {
     public void SendNotifications() {
 
         requestQueue = Volley.newRequestQueue(mActivity);
+
         JSONObject mainObj = new JSONObject();
         try {
             mainObj.put("to", userFcmToken);
+            mainObj.put("priority","high");
             JSONObject notiObject = new JSONObject();
             notiObject.put("title", title);
             notiObject.put("body", body);
@@ -57,7 +59,7 @@ public class FcmNotificationsSender {
 
 
 
-            mainObj.put("notification", notiObject);
+            mainObj.put("data", notiObject);
 
 
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, postUrl, mainObj, new Response.Listener<JSONObject>() {
