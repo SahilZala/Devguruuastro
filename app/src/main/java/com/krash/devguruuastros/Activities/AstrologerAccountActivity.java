@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AstrologerAccountActivity extends AppCompatActivity {
+    //lll
     ActivityAstrologerAccountBinding binding;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
