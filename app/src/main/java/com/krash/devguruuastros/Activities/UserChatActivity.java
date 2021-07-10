@@ -78,6 +78,12 @@ public class UserChatActivity extends AppCompatActivity {
 
     RecyclerView chatShowRV;
 
+    DatabaseReference sendref;
+    DatabaseReference chatref;
+    DatabaseReference requestSatus;
+    ValueEventListener requestStatusListner;
+    ValueEventListener chatListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,7 +167,8 @@ public class UserChatActivity extends AppCompatActivity {
                 if (data.getData() != null) {
                     Uri selectedImage = data.getData();
 
-                    final DatabaseReference sendref = FirebaseDatabase.getInstance().getReference().child("Chat").child(rc.getSessionid()).child("message");
+
+                    sendref = FirebaseDatabase.getInstance().getReference().child("Chat").child(rc.getSessionid()).child("message");
 
                     final String messageid = sendref.push().getKey();
                     final StorageReference reference = firebaseStorage.getReference().child("Chat").child(rc.getSessionid()).child(messageid);
@@ -232,7 +239,7 @@ public class UserChatActivity extends AppCompatActivity {
 
                 isFinish = "yes";
                 onBackPressed();
-                cancel();
+               // cancel();
             }
         }.start();
     }
@@ -246,33 +253,44 @@ public class UserChatActivity extends AppCompatActivity {
 
         count2Min(60000,1000);
 
-        FirebaseDatabase.getInstance().getReference("RequestQueue").child(rc.getAstrologerid()).child(rc.getRequestid()).child("status").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+        requestSatus = FirebaseDatabase.getInstance().getReference("RequestQueue").child(rc.getAstrologerid()).child(rc.getRequestid()).child("status");
+
+        requestStatusListner = new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                if (snapshot.getValue(String.class).equalsIgnoreCase("accept")) {
-                    status = snapshot.getValue(String.class);
-                    progressDialog.cancel();
+                 if (snapshot.getValue(String.class).equalsIgnoreCase("accept")) {
+                     status = snapshot.getValue(String.class);
+                     progressDialog.cancel();
 
 
-                    long dur = Long.parseLong(rc.getDuration());
+                     long dur = Long.parseLong(rc.getDuration());
 
-                    dur = dur * 60000;
+                     dur = dur * 60000;
 
-                    startTimer(dur, 1000);
-                    t1.cancel();
+                     t1.cancel();
+                     startTimer(dur, 1000);
 
-                } else if (snapshot.getValue(String.class).equalsIgnoreCase("cancel") || snapshot.getValue(String.class).equalsIgnoreCase("done")) {
-                    endChat();
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                 } else if (snapshot.getValue(String.class).equalsIgnoreCase("cancel") || snapshot.getValue(String.class).equalsIgnoreCase("astdone")) {
 
-            }
-        });
+                     t.cancel();
+
+                     endChat();
+                 }
+             }
+
+             @Override
+             public void onCancelled(@NonNull DatabaseError error) {
+
+             }
+
+         };
+
+        requestSatus.addValueEventListener(requestStatusListner);
+
     }
 
     void sendMessage() {
@@ -294,9 +312,12 @@ public class UserChatActivity extends AppCompatActivity {
 
 
     void getChatMessage() {
-        DatabaseReference dref = FirebaseDatabase.getInstance().getReference().child("Chat").child(rc.getSessionid()).child("message");
 
-        dref.addValueEventListener(new ValueEventListener() {
+        chatref = FirebaseDatabase.getInstance().getReference().child("Chat").child(rc.getSessionid()).child("message");
+
+
+
+        chatListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -319,14 +340,22 @@ public class UserChatActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        };
+
+
+        chatref.addValueEventListener(chatListener);
 
     }
 
+
+
     void endChat() {
-        if (isFinish.equalsIgnoreCase("no")) {
-            FirebaseDatabase.getInstance().getReference("RequestQueue").child(rc.getAstrologerid()).child(rc.getRequestid()).child("status").setValue("userdone");
-        }
+
+        //remove listner
+        requestSatus.removeEventListener(requestStatusListner);
+        chatref.removeEventListener(chatListener);
+
+
         Toast.makeText(this, "finish chat", Toast.LENGTH_SHORT).show();
         int duration = Integer.parseInt(rc.getDuration());
 
@@ -393,6 +422,9 @@ public class UserChatActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (isFinish.equalsIgnoreCase("yes")) {
+
+            FirebaseDatabase.getInstance().getReference("RequestQueue").child(rc.getAstrologerid()).child(rc.getRequestid()).child("status").setValue("timedone");
+
             endChat();
         } else {
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -404,6 +436,13 @@ public class UserChatActivity extends AppCompatActivity {
 //                        Toast.makeText(AstrologerChatActivity.this, "Chat done succesfully", Toast.LENGTH_SHORT).show();
 //                    }
 //                });
+
+                    if (isFinish.equalsIgnoreCase("no")) {
+                        FirebaseDatabase.getInstance().getReference("RequestQueue").child(rc.getAstrologerid()).child(rc.getRequestid()).child("status").setValue("userdone");
+                    }
+
+                    t.cancel();
+
                     endChat();
                 }
             });
@@ -454,7 +493,7 @@ public class UserChatActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class).putExtra("comesfrom","expired"));
                 finishAffinity();
 
-                cancel();
+//                cancel();
             }
         }.start();
     }

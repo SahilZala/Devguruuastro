@@ -45,34 +45,26 @@ import java.util.Date;
 import java.util.Map;
 
 public class AstrologerChatActivity extends AppCompatActivity {
-    ActivityChatBinding binding;
-    UserInfoLayoutBinding userInfoLayoutBinding;
+
     UserMessageAdapter adapter;
-    String senderUid, receiverUid, imageURL;
     ArrayList<Messages> messages;
-    String senderRoom, receiverRoom;
-    FirebaseDatabase firebaseDatabase;
-    Dialog userDialog;
     long remainedSecs;
     FirebaseStorage firebaseStorage;
     ProgressDialog progressDialog;
     AlertDialog.Builder builder;
-    Dialog dialog, waitingDialog;
-    long dur;
-    Date date;
-    int astPrice, bal, usedDuration, astBal, starPos;
-    String userType, status, name;
-    InputMethodManager imm;
-    Map<String, Object> busy, statusMap;
+    Dialog dialog;
     CountDownTimer t;
     private TextView textTimer;
-
     EditText msgBox;
-
     User user;
-
-
     RecyclerView chatShowRV;
+    DatabaseReference requestRef;
+    ValueEventListener requestListener;
+
+
+    DatabaseReference chatref;
+    ValueEventListener chatListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +142,7 @@ public class AstrologerChatActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(isFinish.equalsIgnoreCase("yes"))
         {
+            FirebaseDatabase.getInstance().getReference("RequestQueue").child(user.getRc().getAstrologerid()).child(user.getRc().getRequestid()).child("status").setValue("timedone");
             endChat();
         }
         else {
@@ -162,6 +155,10 @@ public class AstrologerChatActivity extends AppCompatActivity {
 //                        Toast.makeText(AstrologerChatActivity.this, "Chat done succesfully", Toast.LENGTH_SHORT).show();
 //                    }
 //                });
+
+                    FirebaseDatabase.getInstance().getReference("RequestQueue").child(user.getRc().getAstrologerid()).child(user.getRc().getRequestid()).child("status").setValue("astdone");
+
+                    t.cancel();
                     endChat();
                 }
             });
@@ -182,9 +179,9 @@ public class AstrologerChatActivity extends AppCompatActivity {
 
             public void onFinish() {
                 isFinish = "yes";
-                endChat();
 
-                cancel();
+                onBackPressed();
+               // cancel();
             }
         }.start();
     }
@@ -209,11 +206,13 @@ public class AstrologerChatActivity extends AppCompatActivity {
     }
 
 
+
     void getChatMessage()
     {
-        DatabaseReference dref = FirebaseDatabase.getInstance().getReference().child("Chat").child(user.getRc().getSessionid()).child("message");
 
-        dref.addValueEventListener(new ValueEventListener() {
+        chatref = FirebaseDatabase.getInstance().getReference().child("Chat").child(user.getRc().getSessionid()).child("message");
+
+        chatListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -233,7 +232,9 @@ public class AstrologerChatActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        };
+
+        chatref.addValueEventListener(chatListener);
 
     }
 
@@ -307,9 +308,12 @@ public class AstrologerChatActivity extends AppCompatActivity {
 
     void endChat()
     {
+        chatref.removeEventListener(chatListener);
+        requestRef.removeEventListener(requestListener);
+
         Toast.makeText(this, "finish chat", Toast.LENGTH_SHORT).show();
 
-        FirebaseDatabase.getInstance().getReference("RequestQueue").child(user.getRc().getAstrologerid()).child(user.getRc().getRequestid()).child("status").setValue("done");
+
         finishAffinity();
         startActivity(new Intent(getApplicationContext(),AstrologerMainActivity.class));
 
@@ -317,16 +321,22 @@ public class AstrologerChatActivity extends AppCompatActivity {
     }
 
 
+
+
     void checkRequestStatus()
     {
-        FirebaseDatabase.getInstance().getReference("RequestQueue").child(user.getRc().getAstrologerid()).child(user.getRc().getRequestid()).child("status").addValueEventListener(new ValueEventListener() {
+        requestRef = FirebaseDatabase.getInstance().getReference("RequestQueue").child(user.getRc().getAstrologerid()).child(user.getRc().getRequestid()).child("status");
+
+        requestListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if(snapshot.getValue(String.class).equalsIgnoreCase("userdone"))
+                if(snapshot.getValue(String.class).equalsIgnoreCase("userdone") || snapshot.getValue(String.class).equalsIgnoreCase("timedone"))
                 {
-                    finishAffinity();
-                    startActivity(new Intent(getApplicationContext(),AstrologerMainActivity.class));
+                    t.cancel();
+                     endChat();
+//                    finishAffinity();
+//                    startActivity(new Intent(getApplicationContext(),AstrologerMainActivity.class));
                 }
             }
 
@@ -334,10 +344,7 @@ public class AstrologerChatActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        };
+        requestRef.addValueEventListener(requestListener);
     }
-
-
-
-
 }
